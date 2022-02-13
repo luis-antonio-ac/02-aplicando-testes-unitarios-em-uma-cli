@@ -1,1 +1,1 @@
-export default null;
+export default 1234;
