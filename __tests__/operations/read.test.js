@@ -27,6 +27,16 @@ describe("operation: readUser", () => {
     expect(spyLog).toHaveBeenCalledTimes(1);
   });
 
+  it("Should log error because user is not stored in the database", async () => {
+    getUserByUid.mockResolvedValue();
+
+    await read({ data: userPayload });
+
+    expect(getUserByUid).toBeCalledWith(userPayload.uid);
+    expect(getUserByUid).toHaveBeenCalledTimes(1);
+    expect(spyError).toHaveBeenCalledTimes(1);
+  });
+
   it("should log error because not was possible read user", async () => {
     getUserByUid.mockRejectedValue(
       new Error("Ocorreu um erro ao ler os dados do usuário")
