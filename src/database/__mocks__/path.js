@@ -1,1 +1,1 @@
-export default 1234;
+export default "mocked-path";
